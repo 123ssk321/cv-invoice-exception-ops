@@ -1,0 +1,513 @@
+{
+  "project_slug": "invoice-exception-ops",
+  "project_name": "Invoice Exception Operations",
+  "track": "high",
+  "first_public_result_month": 9,
+  "total_hours": 800,
+  "reserve_hours": 160,
+  "milestones": [
+    {
+      "id": "M1",
+      "title": "Scope, rights, contracts",
+      "description": "Weeks1-5 after selection, months1-2: explicit activation boundary, discovery, rights gates, schema, CPU runtime and 50 synthetic smoke documents;64h work+16h reserve."
+    },
+    {
+      "id": "M2",
+      "title": "Baseline and honest evaluation",
+      "description": "Weeks6-12, months2-3: bounded ingestion/OCR, deterministic extraction, optional public component benchmark and frozen1200-document protocol;88h work+22h reserve."
+    },
+    {
+      "id": "M3",
+      "title": "Exception and reconciliation engine",
+      "description": "Weeks13-20, months3-5: deterministic rules, PO reservations, revision workflow and audit persistence;104h work+26h reserve."
+    },
+    {
+      "id": "M4",
+      "title": "Review and standards boundary",
+      "description": "Weeks21-28, months5-7: operator review API/UI, pinned standards validation and gated revision-safe export;104h work+26h reserve."
+    },
+    {
+      "id": "M5",
+      "title": "First functional public result",
+      "description": "Weeks29-37, months7-9: calibrated review routing, security/evaluation, reproducible deployment and v0.1;target month9, absolute3-12 months after activation;104h work+26h reserve."
+    },
+    {
+      "id": "M6",
+      "title": "Product and operating evidence",
+      "description": "Weeks38-44, months9-11: bounded batch/CSV adapter, recovery/monitoring, optional use-case validation and operator handoff;96h work+24h reserve."
+    },
+    {
+      "id": "M7",
+      "title": "Product-candidate decision",
+      "description": "Weeks45-50, months11-12: independent regression/review, capped hardening, v0.2 and candid commercialization/stop decision;80h work+20h reserve."
+    }
+  ],
+  "issues": [
+    {
+      "id": "IE-001",
+      "title": "Record activation boundaries and validate the plan",
+      "body": "## Goal\n\nMake later activation explicit and keep the public plan honest.\n\n## Implementation steps\n\n1. 2h — Read parent instructions and reconcile the selected project, repository, and activation authorization.\n2. 4h — Create activation/status and reserve ledgers; add a local backlog checker for exact keys, totals, IDs, and DAG.\n3. 2h — Review checks and document the relative release windows.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nplanning/activation.json; planning/reserve-log.md; scripts/check_backlog.py; tests/test_backlog.py\n\n## Acceptance criteria\n\nBefore selection, activation remains null and status planned. On authorized selection, record date and the single 16h/week allocation. Checker rejects cycles, unknown milestones, child double-counting, and totals above 800h.\n\n## Validation and review evidence\n\npython scripts/check_backlog.py; python -m pytest tests/test_backlog.py -q. Exercise one invalid graph in memory and retain its expected failure.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-001.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nNone; selection/activation authorization is required before implementation.\n\n## Data/method pitfalls\n\nPublic repository existence is not activation or functional delivery. Do not change shared AGENTS.md or create remote issues.",
+      "estimate_hours": 8,
+      "milestone": "M1",
+      "depends_on": [],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "scope"
+    },
+    {
+      "id": "IE-002",
+      "title": "Define the AP use case and discovery hypotheses",
+      "body": "## Goal\n\nSpecify the operational decision and a testable demand hypothesis.\n\n## Implementation steps\n\n1. 2h — Map invoice receipt, exception review, approval, and export for one fictional organization.\n2. 4h — Write ten fictional review tasks, comparison protocol, and optional interview questions.\n3. 2h — Review exclusions, success criteria, and unsupported commercialization claims.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\ndocs/product/discovery.md; docs/product/task-script.md; docs/product/assumptions.md\n\n## Acceptance criteria\n\nTen tasks include valid, missing-value, arithmetic, duplicate, and PO-conflict cases. Each identifies operator action and observable result. Separate workflow hypotheses from measured evidence; private data and recruitment are not finish prerequisites.\n\n## Validation and review evidence\n\nDesk-replay all ten tasks against the scope table; record unresolved assumptions and the planned M6 measures.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-002.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-001\n\n## Data/method pitfalls\n\nDo not invent interviews or send outreach without authorization. Existing annotated public data is permitted; no manual dataset creation.",
+      "estimate_hours": 8,
+      "milestone": "M1",
+      "depends_on": [
+        "IE-001"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "discovery"
+    },
+    {
+      "id": "IE-003",
+      "title": "Gate code, weights, data, fonts, and standards rights",
+      "body": "## Goal\n\nPrevent unclear assets entering product-directed evaluation or distribution.\n\n## Implementation steps\n\n1. 4h — Inventory exact proposed artifacts and source license URLs, including transitive/native dependencies.\n2. 2h — Record separate decisions for evaluation, commercial R&D, service use, and redistribution.\n3. 2h — Add a fail-closed ledger checker and review the default and blocked-asset paths.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\ndocs/licenses/ledger.json; docs/licenses/README.md; scripts/check_licenses.py; tests/test_licenses.py\n\n## Acceptance criteria\n\nEach candidate records artifact kind, revision/hash or pending status, evidence URL, use-specific decision, notices, and obligations. Unknown assets cannot be fetched/used. Tesseract engine and eng/por weights have separate entries; NC/ambiguous DocVQA/XFUND remain blocked absent explicit clearance.\n\n## Validation and review evidence\n\npython scripts/check_licenses.py; python -m pytest tests/test_licenses.py -q. A simulated unknown/NC use must fail the commercial-evaluation gate.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-003.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-001\n\n## Data/method pitfalls\n\nA wrapper license does not clear binary, training data, weights, fonts, standards artifacts, or runtime. Repository publicity is not permission.",
+      "estimate_hours": 8,
+      "milestone": "M1",
+      "depends_on": [
+        "IE-001"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "rights"
+    },
+    {
+      "id": "IE-004",
+      "title": "Freeze invoice, evidence, PO, and workflow contracts",
+      "body": "## Goal\n\nTurn the plan's schema into a strict implementable contract.\n\n## Implementation steps\n\n1. 4h — Implement versioned Pydantic models and export JSON Schema for the stated invoice subset.\n2. 4h — Add exact Decimal, evidence-coordinate, profile, and PO examples and rejection cases.\n3. 2h — Review missing/ambiguous semantics and document API/CLI error mappings.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/domain/models.py; schemas/invoice-v1.json; schemas/po-v1.json; docs/contracts.md; tests/test_contracts.py\n\n## Acceptance criteria\n\nAll 25 business scalar paths and eight line paths are specified. Amounts reject floats, unknown fields and unsupported financial constructs. Examples cover PDF boxes, XML XPath, profile-derived values, missing PO, and stale revision requests.\n\n## Validation and review evidence\n\npython -m pytest tests/test_contracts.py -q; schema round-trip valid examples and reject mixed-rate, negative-quantity, malformed-date, and >20-line cases.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-004.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-002\n\n## Data/method pitfalls\n\nDo not claim jurisdictional tax compliance. Never replace missing identities with plausible generated values during inference.",
+      "estimate_hours": 10,
+      "milestone": "M1",
+      "depends_on": [
+        "IE-002"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "contracts"
+    },
+    {
+      "id": "IE-005",
+      "title": "Establish the pinned CPU runtime and smoke commands",
+      "body": "## Goal\n\nProvide a reproducible baseline without a GPU or external model service.\n\n## Implementation steps\n\n1. 4h — Select and lock Python packages, native tools, Tesseract fast eng/por weights, and approved font hashes.\n2. 4h — Implement doctor and minimal CLI entry point; measure available hardware and one OCR smoke.\n3. 2h — Document Windows/Linux setup and review rights/resource fallback.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\npyproject.toml; requirements.lock; src/invoice_ops/cli.py; configs/runtime.yaml; docs/setup.md; tests/test_doctor.py\n\n## Acceptance criteria\n\ndoctor reports actual versions/hashes and fails on missing/uncleared assets. CPU-only smoke runs or produces a recorded structured-only fallback decision. No inference-time downloads. Core defaults follow the plan; alternative engines require Astra.\n\n## Validation and review evidence\n\npython -m invoice_ops.cli doctor --licenses docs/licenses/ledger.json; python -m pytest tests/test_doctor.py -q. Capture installation and hardware evidence.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-005.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-003, IE-004\n\n## Data/method pitfalls\n\nPin actual distributions at activation; upstream source licenses do not automatically clear packaged binaries. No silent AGPL dependency substitution.",
+      "estimate_hours": 10,
+      "milestone": "M1",
+      "depends_on": [
+        "IE-003",
+        "IE-004"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "foundation"
+    },
+    {
+      "id": "IE-006",
+      "title": "Generate canonical transactions and independent rule truth",
+      "body": "## Goal\n\nCreate exact labeled invoice/PO examples without annotation work.\n\n## Implementation steps\n\n1. 4h — Generate seeded fictional parties, Decimal lines, totals, PO records, and corruption mutations.\n2. 4h — Serialize independent expected fields and exception codes plus provenance manifests.\n3. 2h — Test explicit arithmetic oracle cases and seed determinism; review inference/truth separation.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/synthetic/transactions.py; src/invoice_ops/synthetic/truth.py; configs/smoke.yaml; tests/test_synthetic_truth.py\n\n## Acceptance criteria\n\n50 smoke documents reproduce hashes under a pinned runtime; valid and critical-invalid cases are present. Intended and printed values are distinct. Expected labels are independent of the product rules engine; no external identity lookup.\n\n## Validation and review evidence\n\npython -m pytest tests/test_synthetic_truth.py -q; generate twice and compare manifests. Explicit one-cent and quantity-boundary cases must match independent expected values.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-006.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-004, IE-005\n\n## Data/method pitfalls\n\nDo not circularly validate the business engine using itself as the oracle. Labels for corrupted printed values must reflect the actual rendered content.",
+      "estimate_hours": 10,
+      "milestone": "M1",
+      "depends_on": [
+        "IE-004",
+        "IE-005"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "synthetic"
+    },
+    {
+      "id": "IE-007",
+      "title": "Render small synthetic sets with exact geometric labels",
+      "body": "## Goal\n\nProduce PDFs/images with trustworthy text, cell, and token coordinates.\n\n## Implementation steps\n\n1. 4h — Render fictional invoices with approved font and stable PDF metadata; emit box/polygon labels.\n2. 4h — Implement seeded affine/noise/occlusion transforms and base-document split assignment.\n3. 2h — Generate 50 smoke examples and review automatic geometry/hash checks.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/synthetic/render.py; src/invoice_ops/synthetic/transforms.py; data/manifests/smoke.jsonl; tests/test_render_labels.py\n\n## Acceptance criteria\n\nToken/cell polygons stay in page bounds after declared transformations; visibility and unobservable labels are recorded. Seed/template/base IDs are saved. Geometry and text labels are emitted automatically; bad renderings fail checks instead of being hand-repaired.\n\n## Validation and review evidence\n\npython -m invoice_ops.cli synth --config configs/smoke.yaml --out data/generated/smoke; python -m pytest tests/test_render_labels.py -q.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-007.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-006\n\n## Data/method pitfalls\n\nViewing a sample for software QA is allowed; manual ground-truth correction or cherry-picking samples is not. Text hidden by occlusion is not visible-token OCR truth.",
+      "estimate_hours": 10,
+      "milestone": "M1",
+      "depends_on": [
+        "IE-006"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "synthetic"
+    },
+    {
+      "id": "IE-008",
+      "title": "Build bounded ingestion and content-addressed storage",
+      "body": "## Goal\n\nAccept supported documents safely and return reproducible asset IDs.\n\n## Implementation steps\n\n1. 4h — Implement media sniffing, size/page/raster caps, hashes, and atomic asset storage.\n2. 4h — Implement digital-PDF rendering/text access and safe XML subset ingestion.\n3. 4h — Test adversarial inputs, idempotency, and failure cleanup; document error codes.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/ingest/service.py; src/invoice_ops/storage/assets.py; tests/test_ingest.py\n\n## Acceptance criteria\n\nPDF/image/XML fixtures ingest consistently; >20MiB, >3-page, malformed, encrypted, entity-expansion, and path-traversal inputs fail with stable codes. Duplicate idempotency key with different bytes is rejected; no files escape the asset root.\n\n## Validation and review evidence\n\npython -m pytest tests/test_ingest.py -q; bounded smoke ingest using the CLI. Preserve failure-path logs and file-count assertions.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-008.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-004, IE-005, IE-007\n\n## Data/method pitfalls\n\nContent hash deduplication is not business duplicate detection. Do not trust filename extensions or follow external XML resources.",
+      "estimate_hours": 12,
+      "milestone": "M2",
+      "depends_on": [
+        "IE-004",
+        "IE-005",
+        "IE-007"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "ingestion"
+    },
+    {
+      "id": "IE-009",
+      "title": "Implement CPU OCR and source evidence adapters",
+      "body": "## Goal\n\nExtract tokens and evidence through one stable engine interface.\n\n## Implementation steps\n\n1. 4h — Wrap Tesseract fast models with OEM/PSM settings, TSV parsing, and resource/time limits.\n2. 4h — Normalize PDF-text and OCR coordinates while retaining raw engine scores and source IDs.\n3. 4h — Test timeouts, multilingual smoke, blank pages, and truth-file isolation.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/vision/ocr.py; src/invoice_ops/vision/pdf_text.py; tests/test_ocr.py; reports/ocr-smoke.json\n\n## Acceptance criteria\n\nEnglish/Portuguese smoke results include page coordinates and engine hashes. Timeout/empty output is a typed failure or review state, never a valid empty invoice. Raw Tesseract score is not named a probability.\n\n## Validation and review evidence\n\npython -m pytest tests/test_ocr.py -q; benchmark 50 smoke documents and record RSS/time. Tests deny inference access to truth directories.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-009.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-008\n\n## Data/method pitfalls\n\nDo not tune against holdout or silently train on public data. OCR confidence alone cannot establish safe eligibility.",
+      "estimate_hours": 12,
+      "milestone": "M2",
+      "depends_on": [
+        "IE-008"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "extraction"
+    },
+    {
+      "id": "IE-010",
+      "title": "Implement the deterministic invoice and UBL subset parser",
+      "body": "## Goal\n\nCreate the B0 extraction baseline with explicit ambiguity.\n\n## Implementation steps\n\n1. 4h — Implement fixed anchors/regex normalization and line/table token grouping.\n2. 4h — Map supported UBL paths and preserve XML evidence; reject unsupported financial elements.\n3. 4h — Test known fields, tables, locale separators, ambiguity, and profile-derived values.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/extract/invoice.py; src/invoice_ops/extract/ubl_input.py; tests/test_parse_invoice.py; configs/baseline.yaml\n\n## Acceptance criteria\n\nParser outputs schema-v1 revisions for supported generated examples. Missing/ambiguous fields remain explicit; mixed rates, charges, credit notes, and unrecognized financial elements are rejected. No learned extractor or remote inference is introduced.\n\n## Validation and review evidence\n\npython -m pytest tests/test_parse_invoice.py -q; save B0 predictions on the 240-document development subset.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-010.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-009, IE-004\n\n## Data/method pitfalls\n\nRegex success on familiar templates is not general invoice understanding. Never discard unsupported UBL amounts to force a valid record.",
+      "estimate_hours": 12,
+      "milestone": "M2",
+      "depends_on": [
+        "IE-009",
+        "IE-004"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "extraction"
+    },
+    {
+      "id": "IE-011",
+      "title": "Evaluate a small rights-cleared public layout subset",
+      "body": "## Goal\n\nAdd independent component evidence using existing annotations.\n\n## Implementation steps\n\n1. 4h — Implement a deterministic DocLayNet subset manifest using official splits and document IDs.\n2. 4h — Measure table-region proposal precision/recall at IoU 0.5 using existing boxes.\n3. 4h — Review provenance, counts, and limitations; document unavailable-access fallback.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/eval/public_layout.py; configs/public-layout.yaml; data/manifests/public-layout.jsonl; reports/public-layout.md; tests/test_public_layout.py\n\n## Acceptance criteria\n\nStart at 40 documents; never exceed 200 pages or 1GiB transfer. Preserve source split and labels. Report actual downloaded/evaluated counts, grouped intervals, notices and no invoice-field claims. If selective access/rights fails, a truthful not-evaluated report plus synthetic-only path satisfies this evidence task.\n\n## Validation and review evidence\n\npython -m pytest tests/test_public_layout.py -q; run public-layout evaluation only after the use-specific license check. Validate sampler against a tiny generated COCO fixture.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-011.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-003, IE-009, IE-010\n\n## Data/method pitfalls\n\nNo manual page selection, label repairs, full archive download workaround, or NC benchmark exception. Public layout evidence does not validate customer invoice accuracy.",
+      "estimate_hours": 12,
+      "milestone": "M2",
+      "depends_on": [
+        "IE-003",
+        "IE-009",
+        "IE-010"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "evaluation"
+    },
+    {
+      "id": "IE-012",
+      "title": "Freeze evaluation splits, metrics, and objective baselines",
+      "body": "## Goal\n\nMake baseline claims reproducible and keep testing independent of tuning.\n\n## Implementation steps / child slices\n\n1. 8h — Implement 12 template families with 6/3/3 family split and staged 240-to-1200 document manifests.\n2. 8h — Implement field, row, exception, evidence, abstention and latency metrics with denominators.\n3. 8h — Add grouped bootstrap and Wilson intervals; freeze thresholds/calibration protocol.\n4. 8h — Run B0 and exact-input B1 harness scaffolding on development data; seal test manifest.\n5. 8h — Review leakage tests and document the M2 go/fallback decision.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/eval/metrics.py; src/invoice_ops/eval/runner.py; configs/evaluation.yaml; data/manifests/calibration.jsonl; data/manifests/test.jsonl; reports/baseline/; tests/test_evaluation.py\n\n## Acceptance criteria\n\nManifest contains 600 development, 200 calibration and 400 sealed test base documents with template/base disjointness. Test composition meets plan strata. B1 logic is connected after IE-013; this package freezes its exact-input interface and oracle cases, not invented results. All-review mode is explicitly supported.\n\n## Validation and review evidence\n\npython -m pytest tests/test_evaluation.py -q; python -m invoice_ops.cli eval --manifest data/manifests/calibration.jsonl --config configs/baseline.yaml --out reports/baseline. Review independent denominator/leakage assertions.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-012.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-007, IE-010, IE-011\n\n## Data/method pitfalls\n\nSynthetic metrics are not real-world accuracy. Never label hidden text OCR errors as observable failures; never count abstention as correct extraction.",
+      "estimate_hours": 40,
+      "milestone": "M2",
+      "depends_on": [
+        "IE-007",
+        "IE-010",
+        "IE-011"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "evaluation"
+    },
+    {
+      "id": "IE-013",
+      "title": "Implement deterministic exception rules and B1 baseline",
+      "body": "## Goal\n\nExplain each supported business-rule failure with reproducible evidence.\n\n## Implementation steps / child slices\n\n1. 8h — Implement required/profile/date/decimal validation and stable Finding codes.\n2. 8h — Implement independent arithmetic checks and duplicate-candidate rules.\n3. 8h — Connect exact-input B1 evaluation and generate per-code oracle fixtures.\n4. 8h — Test boundaries and review rule catalog and measured results.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/rules/engine.py; configs/rules-v1.yaml; docs/rule-catalog.md; tests/test_rules.py; reports/baseline/b1.json\n\n## Acceptance criteria\n\nAt least ten generated cases per core rule plus explicit one-cent cases match exact code/path/severity expectations. No known critical-invalid oracle fixture is eligible. Duplicate candidates use normalized seller/id/currency and are reviewed, not silently deleted.\n\n## Validation and review evidence\n\npython -m pytest tests/test_rules.py -q; run exact-input B1 and archive expected-versus-observed findings.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-013.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-012\n\n## Data/method pitfalls\n\nGenerator and rule engine must not share expected-outcome code. This bounded arithmetic profile does not establish tax/legal compliance.",
+      "estimate_hours": 32,
+      "milestone": "M3",
+      "depends_on": [
+        "IE-012"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "rules"
+    },
+    {
+      "id": "IE-014",
+      "title": "Build PO reconciliation and quantity reservations",
+      "body": "## Goal\n\nDetect mismatches and prevent duplicate consumption of PO quantities.\n\n## Implementation steps / child slices\n\n1. 8h — Validate atomic CSV snapshots and exact supplier/currency/line mappings.\n2. 8h — Implement price and outstanding-quantity checks with explicit ambiguity.\n3. 8h — Add transactional reservations, retry keys, and snapshot supersession semantics.\n4. 6h — Exercise concurrent approvals, partial quantities, and refreshed snapshots.\n5. 6h — Review reconciliation contract and annotate reproducible failure evidence.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/reconcile/service.py; src/invoice_ops/storage/po.py; schemas/po-v1.json; examples/po.csv; tests/test_reconcile.py\n\n## Acceptance criteria\n\nUnknown/ambiguous lines enter review; quantity overrun and price mismatch block export. Concurrent retries cannot overreserve. Snapshot imports fail atomically on duplicate keys or negative outstanding quantity; acknowledged exports are not counted twice.\n\n## Validation and review evidence\n\npython -m pytest tests/test_reconcile.py -q; replay two invoices against one limited PO and compare committed quantities.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-014.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-013\n\n## Data/method pitfalls\n\nNo fuzzy automatic SKU matching, private PO dataset, or live ERP connection. A no-PO disposition must remain visible and cannot masquerade as reconciliation.",
+      "estimate_hours": 36,
+      "milestone": "M3",
+      "depends_on": [
+        "IE-013"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "reconciliation"
+    },
+    {
+      "id": "IE-015",
+      "title": "Implement revisions, workflow state, and audit persistence",
+      "body": "## Goal\n\nMake corrections and approval/export state durable and reproducible.\n\n## Implementation steps / child slices\n\n1. 8h — Implement SQLite models/migrations and storage UnitOfWork.\n2. 8h — Implement assess/correct/approve transitions and optimistic concurrency.\n3. 8h — Invalidate approvals/reservations on revision changes; preserve historical exports.\n4. 6h — Test rollback, job restarts, stale edits, and audit atomicity.\n5. 6h — Review state-transition matrix and operator error messages.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/storage/repository.py; src/invoice_ops/storage/migrations/; src/invoice_ops/workflow/service.py; docs/workflow.md; tests/test_workflow.py\n\n## Acceptance criteria\n\nEvery correction produces a new revision and reruns findings; stale edits return conflict. Audit/state changes are atomic. Approving or exporting a superseded revision is impossible. No unresolved blocking finding can be manually waived.\n\n## Validation and review evidence\n\npython -m pytest tests/test_workflow.py -q; crash/restart between transaction boundaries and compare revisions, audit events, and reservations.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-015.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-014, IE-008\n\n## Data/method pitfalls\n\nApplication append-only logging is not tamper-proof storage. Human corrections are workflow actions, not a required manually labeled training corpus.",
+      "estimate_hours": 36,
+      "milestone": "M3",
+      "depends_on": [
+        "IE-014",
+        "IE-008"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "workflow"
+    },
+    {
+      "id": "IE-016",
+      "title": "Build API and evidence-centered browser review",
+      "body": "## Goal\n\nLet an operator resolve fictional exceptions through the actual service contracts.\n\n## Implementation steps / child slices\n\n1. 8h — Implement stated FastAPI routes, error codes, local session and CSRF checks.\n2. 8h — Build escaped server-rendered queue, document/evidence view, and findings panel.\n3. 8h — Implement correction/revalidation and explicit approval interactions.\n4. 8h — Run browser tests, keyboard checks, and review error/accessibility behavior.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/api/app.py; src/invoice_ops/templates/; src/invoice_ops/static/review.js; tests/test_api.py; tests/browser/test_review.py\n\n## Acceptance criteria\n\nTen scripted tasks can reach the intended review outcome. Evidence opens the correct page/field; corrections show changed findings and revision. Stale requests yield 409; raw invoice text cannot inject HTML. UI never labels internal eligibility as payment approval.\n\n## Validation and review evidence\n\npython -m pytest tests/test_api.py tests/browser/test_review.py -q; record a browser walkthrough with synthetic fixtures.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-016.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-015\n\n## Data/method pitfalls\n\nDo not duplicate business rules in JavaScript or imply that Portuguese smoke testing establishes multilingual parity.",
+      "estimate_hours": 32,
+      "milestone": "M4",
+      "depends_on": [
+        "IE-015"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "review"
+    },
+    {
+      "id": "IE-017",
+      "title": "Integrate pinned UBL and Schematron validation",
+      "body": "## Goal\n\nProvide a reproducible, rights-cleared validation boundary that fails closed.\n\n## Implementation steps / child slices\n\n1. 8h — Learn and map the narrow UBL profile; freeze schemas, rules, code lists, and license evidence.\n2. 8h — Configure Saxon-HE/Java and compatible compiled Schematron or cleared compiler.\n3. 8h — Implement offline validation wrapper, version hashes, timeout and diagnostic normalization.\n4. 6h — Test valid/invalid examples, missing artifacts, and external-resource denial.\n5. 6h — Review standards limitations or record the JSON-only fallback decision.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/standards/validator.py; configs/standards-lock.json; docs/licenses/ledger.json; docs/standards-profile.md; tests/test_standards.py\n\n## Acceptance criteria\n\nSupported valid fixture passes XSD plus pinned TC434 and Peppol checks; deliberate invalid examples fail with stable evidence. Missing/uncleared validator blocks UBL, never passes it. Compiler, XSD, rules, Java and binary notices are separately recorded. Budget-exhausted integration goes to Astra with an explicit fallback.\n\n## Validation and review evidence\n\npython -m pytest tests/test_standards.py -q; compare independent runner diagnostics and wrapper output on fixtures; capture all artifact hashes.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-017.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-003, IE-013, IE-015\n\n## Data/method pitfalls\n\nMoving standards URLs, lxml XSLT1-only assumptions, and example-file availability do not establish compatibility, redistribution rights, or certification.",
+      "estimate_hours": 36,
+      "milestone": "M4",
+      "depends_on": [
+        "IE-003",
+        "IE-013",
+        "IE-015"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "standards"
+    },
+    {
+      "id": "IE-018",
+      "title": "Implement gated exports and end-to-end workflow",
+      "body": "## Goal\n\nComplete the invoice-to-reviewed-export path with revision-safe output.\n\n## Implementation steps / child slices\n\n1. 8h — Map approved schema fields/profile values to supported UBL and JSON/exception CSV.\n2. 8h — Gate exports on current revision, human approval, reservations, and full standards results.\n3. 8h — Implement idempotent export bytes, provenance receipts, and supersession behavior.\n4. 6h — Test round trips, unresolved findings, repeated export, and failed validation.\n5. 6h — Review the full fictional invoice/PO/correction/export walkthrough.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/export/ubl.py; src/invoice_ops/export/reports.py; schemas/export-receipt.json; tests/test_export.py; tests/acceptance/test_invoice_flow.py\n\n## Acceptance criteria\n\nApproved supported fixture produces reproducible validated UBL and receipt; invalid/unapproved/stale input produces no UBL. JSON-only fallback is visibly named. No-PO reviewed records can use JSON reports but cannot pass the v1 UBL PO-reference gate.\n\n## Validation and review evidence\n\npython -m pytest tests/test_export.py tests/acceptance/test_invoice_flow.py -q; inspect saved diagnostics and hashes for valid and blocked cases.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-018.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-016, IE-017\n\n## Data/method pitfalls\n\nNo legal/Peppol network certification claim, invented endpoint IDs, or automatic payment/posting. Historical exports must not be silently overwritten.",
+      "estimate_hours": 36,
+      "milestone": "M4",
+      "depends_on": [
+        "IE-016",
+        "IE-017"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "export"
+    },
+    {
+      "id": "IE-019",
+      "title": "Calibrate abstention and bound OCR performance work",
+      "body": "## Goal\n\nChoose eligibility thresholds and a measured CPU configuration within a fixed budget.\n\n## Implementation steps / child slices\n\n1. 8h — Fit/select critical-field eligibility thresholds using calibration data only.\n2. 12h — Compare PSM 3/6 and optionally rights-cleared tessdata_best on the same bounded subset.\n3. 6h — Measure latency/RSS and evaluate default-versus-alternative cost/quality.\n4. 6h — Review configuration choice, Portuguese limits, and all-review/structured-only fallback.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nconfigs/eligibility.yaml; configs/runtime.yaml; reports/calibration.md; tests/test_eligibility.py\n\n## Acceptance criteria\n\nAt most one bounded OCR alternative study consumes 12h. Thresholds freeze before test opening; low-confidence/missing evidence always requests review. Report p95 against 20s/page and RSS against 4GiB targets on named hardware, with actual measurements and failures.\n\n## Validation and review evidence\n\npython -m pytest tests/test_eligibility.py -q; run calibration evaluation and compare raw predictions, coverage and joint critical-field accuracy.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-019.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-018, IE-012\n\n## Data/method pitfalls\n\nNever calibrate on final test or treat confidence_raw as probability. A missed target triggers candid fallback, not fabricated accuracy.",
+      "estimate_hours": 32,
+      "milestone": "M5",
+      "depends_on": [
+        "IE-018",
+        "IE-012"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "calibration"
+    },
+    {
+      "id": "IE-020",
+      "title": "Harden input handling and audit the frozen evaluation",
+      "body": "## Goal\n\nCheck security failure paths and measure the first untouched test result.\n\n## Implementation steps / child slices\n\n1. 8h — Test parser/resource attacks, CSRF, escaped views, path access and per-session demo isolation.\n2. 8h — Run sealed 400-document test and public component report; calculate CIs and failure strata.\n3. 8h — Review oracle correctness, eligibility gate, licensing, and release-blocking defects.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\ntests/security/test_input_limits.py; tests/security/test_sessions.py; reports/evaluation-v0.1.md; reports/security-v0.1.md\n\n## Acceptance criteria\n\nZero known critical-invalid golden fixtures accepted; no cross-session data exposure or parser escape. Test report includes all denominators and unavailable evidence. Eligibility requires >=100 admissions and Wilson95 lower bound >=0.95 or is disabled. Functional correctness gates cannot be waived.\n\n## Validation and review evidence\n\npython -m pytest tests/security tests/test_rules.py -q; run frozen test once and archive manifests/config hashes. Inspect failed cases without retuning on them.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-020.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-019, IE-011\n\n## Data/method pitfalls\n\nPublic layout metrics and synthetic robustness remain separate. Test failures must not be deleted or relabeled to improve the score.",
+      "estimate_hours": 24,
+      "milestone": "M5",
+      "depends_on": [
+        "IE-019",
+        "IE-011"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "assurance"
+    },
+    {
+      "id": "IE-021",
+      "title": "Package the fixture-only deployment demo",
+      "body": "## Goal\n\nMake the public functional result reproducible without paid hosting.\n\n## Implementation steps / child slices\n\n1. 8h — Build pinned Linux container/compose with local persistent and disposable demo modes.\n2. 8h — Add offline fixture demo command, resource limits, health checks, and cold-start smoke.\n3. 8h — Review clean-checkout Windows/Linux setup, notices, and deployment evidence.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\ndeploy/Dockerfile; deploy/compose.yaml; examples/demo/; src/invoice_ops/demo.py; docs/deployment.md; tests/acceptance/test_demo.py\n\n## Acceptance criteria\n\nClean environment starts a working local browser demo using only bundled synthetic fixtures. Public demo mode exposes no upload/profile-edit endpoints; sessions cannot share data. Container/runtime rights and hashes are recorded. No hosted service is required.\n\n## Validation and review evidence\n\ndocker compose -f deploy/compose.yaml up --build; python -m pytest tests/acceptance/test_demo.py -q; capture offline restart and valid/invalid fixture traces.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-021.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-020\n\n## Data/method pitfalls\n\nNo paid account or cloud dependency may become hidden critical path. Hosted deployment and remote publication require the later workflow's authority, not this planning task.",
+      "estimate_hours": 24,
+      "milestone": "M5",
+      "depends_on": [
+        "IE-020"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "deployment"
+    },
+    {
+      "id": "IE-022",
+      "title": "Deliver the first functional public release gate",
+      "body": "## Goal\n\nPrepare and, when authorized in implementation, publish v0.1 in month 9.\n\n## Implementation steps / child slices\n\n1. 8h — Prepare release notes, walkthrough, packaged fixtures, report links and reproducibility manifest.\n2. 8h — Rehearse clean-install valid/invalid/correction/PO/export scenarios and backup smoke.\n3. 8h — Review release gates and timeline; publish only within later authorized release workflow and capture release evidence.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\ndocs/releases/v0.1.md; reports/release-v0.1.json; README.md; tests/acceptance/test_release.py\n\n## Acceptance criteria\n\nFunctional demo runs from a clean checkout; invalid input refuses export and corrections invalidate approval. Gate decision records activation-relative month, scope/fallback, hashes and limitations. Target month9, preferred6-9, hard3-12; planning publication never counts. If remote authority is absent, record release prepared rather than published.\n\n## Validation and review evidence\n\npython -m pytest -m acceptance -q; reviewer repeats the documented demo; verify release manifest links/hashes and standards receipts.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-022.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-021\n\n## Data/method pitfalls\n\nDo not call screenshots a functional result or synthetic metrics customer validation. Current task implements/publishes none of this.",
+      "estimate_hours": 24,
+      "milestone": "M5",
+      "depends_on": [
+        "IE-021"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "release"
+    },
+    {
+      "id": "IE-023",
+      "title": "Add bounded batches and one CSV accounting adapter",
+      "body": "## Goal\n\nExtend the reviewed workflow to a small operational batch without live ERP access.\n\n## Implementation steps / child slices\n\n1. 8h — Implement <=50-invoice batch queue, per-item status and bounded retry.\n2. 8h — Implement versioned CSV export/import-ack simulator and snapshot reservation reconciliation.\n3. 8h — Test partial failure, duplicate acknowledgment, formula-safe CSV, and operator docs.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/integrations/csv_adapter.py; src/invoice_ops/workflow/batch.py; schemas/accounting-csv-v1.json; tests/test_batch_adapter.py; docs/csv-adapter.md\n\n## Acceptance criteria\n\n50-item batch preserves successes and exposes per-item failures; only approved current revisions export. Repeated acknowledgments do not consume quantities twice. CSV fields beginning with formula characters are escaped under the documented contract. No live credentials or posting.\n\n## Validation and review evidence\n\npython -m pytest tests/test_batch_adapter.py -q; replay crash/retry/import-ack sequences and compare reservation/export counts.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-023.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-022\n\n## Data/method pitfalls\n\nA simulated generic CSV adapter is not certified ERP compatibility. Do not claim production reconciliation without external evidence.",
+      "estimate_hours": 24,
+      "milestone": "M6",
+      "depends_on": [
+        "IE-022"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "integration"
+    },
+    {
+      "id": "IE-024",
+      "title": "Implement retention, backup, recovery and operational signals",
+      "body": "## Goal\n\nMake a single-organization deployment maintainable and recoverable.\n\n## Implementation steps / child slices\n\n1. 8h — Implement backup/restore verification and tested migration rollback boundary.\n2. 8h — Implement documented purge/retention and seven-day backup expiry behavior.\n3. 8h — Add redacted metrics/logging, canary corpus, failure thresholds and restart runbook.\n4. 8h — Run restore/crash/canary drills and review operational limits.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/ops/backup.py; src/invoice_ops/ops/retention.py; src/invoice_ops/ops/metrics.py; docs/runbook.md; tests/test_recovery.py; reports/recovery-drill.md\n\n## Acceptance criteria\n\nRestored assets, revisions, audit and export hashes match; corrupted backup fails safely. Purge preserves documented audit metadata and explains backup expiry. Logs contain no invoice text; canary regressions are detectable. Maintenance needs fit a single local operator.\n\n## Validation and review evidence\n\npython -m pytest tests/test_recovery.py -q; run backup/restore into a fresh directory and compare counts/hashes; trigger a synthetic canary failure.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-024.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-023\n\n## Data/method pitfalls\n\nDo not advertise tamper-proof audit, real traffic drift detection, or successful deletion from unexpired backups.",
+      "estimate_hours": 32,
+      "milestone": "M6",
+      "depends_on": [
+        "IE-023"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "operations"
+    },
+    {
+      "id": "IE-025",
+      "title": "Run bounded use-case validation or document absent evidence",
+      "body": "## Goal\n\nTest workflow usefulness without making private-data access a technical dependency.\n\n## Implementation steps / child slices\n\n1. 6h — Finalize optional participant script, consent, counterbalanced comparison and evidence template.\n2. 8h — Run up to three practitioner sessions if available, otherwise maintainer rehearsal and assumption analysis.\n3. 6h — Analyze task time, incorrect resolutions, explanation clarity and counterexamples.\n4. 4h — Review pilot recommendation and conditional commercialization limits.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\ndocs/product/validation-protocol.md; reports/use-case-validation.md; docs/product/pilot-decision.md\n\n## Acceptance criteria\n\nSeparate external sessions from internal rehearsal with actual participant counts. Target >=20% median time reduction and zero critical wrong resolutions on ten tasks per practitioner; report misses and uncertainty. With zero external participants, outcome says market/customer benefit unvalidated and technical work may finish.\n\n## Validation and review evidence\n\nReplay task scoring against fixed fictional truth; review timings/order/case counts and ensure no invented participants or private documents.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-025.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-022, IE-002\n\n## Data/method pitfalls\n\nOptional feedback is not manual data labeling. Do not send outreach absent explicit authorization; no paid annotator, recruitment or private-corpus dependency.",
+      "estimate_hours": 24,
+      "milestone": "M6",
+      "depends_on": [
+        "IE-022",
+        "IE-002"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "product-validation"
+    },
+    {
+      "id": "IE-026",
+      "title": "Complete operator documentation and implementer handoff",
+      "body": "## Goal\n\nMake setup, exception resolution, recovery, and limitations usable by another operator.\n\n## Implementation steps / child slices\n\n1. 8h — Write quickstart, operator examples, troubleshooting and handoff packet.\n2. 8h — Perform a clean-room documentation walkthrough and review terminology/evidence links.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\ndocs/operator-guide.md; docs/troubleshooting.md; docs/HANDOFF.md; README.md; reports/docs-walkthrough.md\n\n## Acceptance criteria\n\nA fresh local user can follow install, ingest, review, correct, approve, export, backup and restore instructions. Every advertised feature maps to a test/result; unavailable external evidence and fallback scope are prominent.\n\n## Validation and review evidence\n\nExecute documented commands on synthetic fixtures and record exit codes; check links and compare CLI help against docs.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-026.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-024, IE-025\n\n## Data/method pitfalls\n\nNo implementation claim may precede its evidence. Keep vendor/runtime setup details accurate without implying model or legal certification.",
+      "estimate_hours": 16,
+      "milestone": "M6",
+      "depends_on": [
+        "IE-024",
+        "IE-025"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "documentation"
+    },
+    {
+      "id": "IE-027",
+      "title": "Run final regressions and independent release review",
+      "body": "## Goal\n\nEstablish a credible product-candidate evidence set.\n\n## Implementation steps / child slices\n\n1. 8h — Run full rule, reconciliation, browser, security, recovery and performance regression.\n2. 8h — Review frozen benchmark comparison and separately labeled public/customer evidence.\n3. 8h — Perform an independent contract/license review and prioritize remaining release blockers.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nreports/evaluation-v0.2.md; reports/review-v0.2.md; tests/acceptance/test_candidate.py; docs/licenses/ledger.json\n\n## Acceptance criteria\n\nAll required correctness/security/recovery gates pass; no unexplained regression or silent exclusions. If extraction changed after test disclosure, use a newly generated family-disjoint holdout and document comparison. Reviewer records actual pass/fail/not-run evidence.\n\n## Validation and review evidence\n\npython -m pytest -q; python -m pytest -m acceptance -q; replay frozen or replacement holdout per protocol and archive versioned reports.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-027.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-026\n\n## Data/method pitfalls\n\nRepeatedly testing the same holdout after tuning is leakage. Public component success cannot substitute for an absent customer pilot.",
+      "estimate_hours": 24,
+      "milestone": "M7",
+      "depends_on": [
+        "IE-026"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "verification"
+    },
+    {
+      "id": "IE-028",
+      "title": "Resolve bounded candidate blockers and rehearse maintenance",
+      "body": "## Goal\n\nSpend a capped hardening allocation on observed defects and operating readiness.\n\n## Implementation steps / child slices\n\n1. 8h — Fix highest-priority recorded correctness/usability defects without expanding scope.\n2. 8h — Add targeted regressions and run standards/dependency update plus rollback rehearsal.\n3. 8h — Review unresolved risk, resource forecasts, and stop/go recommendation.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nsrc/invoice_ops/; tests/regression/; reports/hardening-v0.2.md; docs/runbook.md; planning/reserve-log.md\n\n## Acceptance criteria\n\nEach fix cites an observed failure and passing regression. No new features/engines enter under hardening. If no blockers exist, use the allocation for documented failure injection/maintenance rehearsal. Unresolved blockers prevent full candidate labeling and activate the stop/prototype decision.\n\n## Validation and review evidence\n\nRun affected tests after each fix, then release acceptance once; record update/rollback hashes and backup compatibility.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-028.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-027\n\n## Data/method pitfalls\n\nDo not consume reserve silently or exceed800h. Larger design changes go to Astra with a budget-neutral proposal; no unnecessary user confirmations for routine fixes.",
+      "estimate_hours": 24,
+      "milestone": "M7",
+      "depends_on": [
+        "IE-027"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "hardening"
+    },
+    {
+      "id": "IE-029",
+      "title": "Prepare the month-12 product-candidate release",
+      "body": "## Goal\n\nPackage a complete, honestly scoped v0.2 technical candidate.\n\n## Implementation steps / child slices\n\n1. 8h — Build final locked artifacts, notices, operator docs and provenance receipts.\n2. 6h — Rehearse clean-install/restore and check all public claims against evidence.\n3. 6h — Finalize release record and perform remote release only under later explicit workflow authority.\n\nThese sequential 2–12h child slices are included in this epic estimate, not separately budgeted issues. The estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\ndocs/releases/v0.2.md; reports/release-v0.2.json; README.md; docs/HANDOFF.md\n\n## Acceptance criteria\n\nMonth12 release record includes tested artifact hashes, known limitations, rights status, functional scope and evidence categories. If blocked, record scoped prototype/stop instead of falsely declaring candidate complete. No private data is required for technical completion.\n\n## Validation and review evidence\n\nRepeat release acceptance on the final artifact; verify manifests/notices and all README feature claims.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-029.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-028\n\n## Data/method pitfalls\n\nCommercial readiness and legal compliance require evidence beyond this technical release. No current planning-task remote writes are authorized.",
+      "estimate_hours": 20,
+      "milestone": "M7",
+      "depends_on": [
+        "IE-028"
+      ],
+      "labels": [
+        "type:epic",
+        "priority:P1"
+      ],
+      "phase": "release"
+    },
+    {
+      "id": "IE-030",
+      "title": "Close the budget and make the commercialization decision",
+      "body": "## Goal\n\nFinish the project with explicit technical, market and maintenance outcomes.\n\n## Implementation steps\n\n1. 4h — Reconcile actual hours, remaining reserve, deliverables and milestone outcomes.\n2. 4h — Write technical-candidate/pilot/prototype/stop decision using observed evidence.\n3. 4h — Review final handoff, next-owner maintenance cadence and conditional future work.\n\nThe estimate includes implementation, learning, normal fixes, tests, documentation and review. Work starts only after project activation.\n\n## Expected output paths\n\nreports/final-decision.md; planning/reserve-log.md; docs/HANDOFF.md; README.md\n\n## Acceptance criteria\n\nIssue estimate sum remains640h and reserve160h unless an explicitly approved rebaseline stays within832h and20% reserve. Decision distinguishes technical finish from commercial validation; absent external evidence remains visible. Unbuilt future ideas are outside the finished budget.\n\n## Validation and review evidence\n\nRun backlog and parent validators; trace every milestone to evidence; compare release dates to activation and confirm actual+remaining forecast.\n\nStore commands, results, hashes, actual/remaining hours, limitations and reviewer findings in planning/evidence/IE-030.md. Apply the execution plan's done/blocked and Luna/GPT-5.6-to-Astra handoff policy. Do not mark unrun checks passed.\n\n## Dependencies\n\nIE-029, IE-025\n\n## Data/method pitfalls\n\nNo assumed revenue, willingness-to-pay or real invoice accuracy. Do not leave a failed technical gate hidden behind a commercial roadmap.",
+      "estimate_hours": 12,
+      "milestone": "M7",
+      "depends_on": [
+        "IE-029",
+        "IE-025"
+      ],
+      "labels": [
+        "type:task",
+        "priority:P1"
+      ],
+      "phase": "decision"
+    }
+  ]
+}
